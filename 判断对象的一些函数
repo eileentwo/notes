@@ -31,3 +31,14 @@ function isUndef (v) {
   function isObject (obj) {
     return obj !== null && typeof obj === 'object'
   }
+function toString (val) {
+    return val == null
+      ? ''
+      : Array.isArray(val) || (isPlainObject(val) && val.toString === _toString)
+        ? JSON.stringify(val, null, 2)
+        : String(val)
+  }
+  function toNumber (val) {
+    var n = parseFloat(val);
+    return isNaN(n) ? val : n
+  }
