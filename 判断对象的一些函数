@@ -1,0 +1,33 @@
+function isUndef (v) {
+    return v === undefined || v === null
+  }
+
+  function isDef (v) {
+    return v !== undefined && v !== null
+  }
+
+  function isTrue (v) {
+    return v === true
+  }
+
+  function isFalse (v) {
+    return v === false
+  }
+  function isPrimitive (value) {
+    return (
+      typeof value === 'string' ||
+      typeof value === 'number' ||
+      // $flow-disable-line
+      typeof value === 'symbol' ||
+      typeof value === 'boolean'
+    )
+  }
+
+  /**
+   * Quick object check - this is primarily used to tell
+   * Objects from primitive values when we know the value
+   * is a JSON-compliant type.
+   */
+  function isObject (obj) {
+    return obj !== null && typeof obj === 'object'
+  }
