@@ -1,0 +1,62 @@
+1.输入两个字符串，从第一个字符串中删除第二个字符串中的所有字符串（不可以使用replace）。例如：输入“This is an apple”和“sa” 则删除之后的第一个字符串变成 “Thi i n pple”
+console.time()
+var shanchu="sa";
+var yuan="This is an apple";
+var arr=yuan.split("");
+for(var index in shanchu){
+    var s=shanchu.charAt(index);
+    for(var key in arr) {
+        if (arr[key] === s) {
+            arr.splice(key, 1);
+        }
+    }
+}
+console.log(arr.join(""));
+console.timeEnd();
+2.计算字符串中某个字符的个数
+
+var shuzu='abdujiksaanhjaa';
+function chaxun(s){
+    var count=0;
+    for(var key in shuzu)
+    {
+        if(shuzu.charAt(key)===s)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+console.log(chaxun("a"));
+3.一串字符串，返回那个元素最多，并返回其个数
+var str = "1236548955221555362";
+var arr = [];
+showNumber();
+function showNumber() {
+   var count = 0;
+   arr.push([
+   str.charAt(0),
+   count
+]);
+   for (var i = 0; i < str.length; i++) {
+       if (arr[arr.length - 1][0] == str.charAt(i)) {
+           count++;
+           str = str.replace(str.charAt(i), "")
+           arr[arr.length - 1][1] = count;
+           i--;
+       }
+   }
+   if (str.length == 0) {
+       var max = 0;
+       var key = 0;
+       for (var index in arr) {
+           if (arr[index][1] > max) {
+               max = arr[index][1];
+               key = index;
+           }
+       }
+    console.log("最多的元素是"+arr[key][0] + "/" +"这个元素有"+ max+"个");
+    return "";
+   }
+   showNumber();
+}
